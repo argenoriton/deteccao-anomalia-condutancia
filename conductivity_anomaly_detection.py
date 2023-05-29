@@ -32,8 +32,8 @@ def find_spike(spike_threshold, conductance_data, start_time=None, end_time=None
     for i in range(1, len(conductance_data_filtered)):
         current_data = conductance_data_filtered.iloc[i]
         previous_data = conductance_data_filtered.iloc[i-1]
-        conductance_diff = abs(
-            current_data['conductance'] - previous_data['conductance'])
+        conductance_diff = current_data['conductance'] - \
+            previous_data['conductance']
         if conductance_diff >= spike_threshold:
             spike_list.append({
                 'Time': current_data['Time'],
